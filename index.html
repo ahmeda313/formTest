@@ -24,8 +24,8 @@
     </style>
 </head>
 <body class="h-screen w-screen flex flex-col justify-center bg-slate-950">
-    <h1 class="mt-0 text-4xl font-bold tracking-tight mx-auto sm:text-6xl text-white">CODE HUB</h1>
-        <div class="mt-10 mx-auto">  
+    <h1 class="mt-0 text-4xl font-bold tracking-tight mx-auto sm:text-6xl text-white" id="heading">CODE HUB</h1>
+        <div class="mt-10 mx-auto" id="form">  
             <form name="submit-to-google-sheet" class="flex flex-col">
                 <input name="name" type="text" placeholder="Name" class="my-5 border-white border-solid" required>
                 <input name="email" type="email" placeholder="Email" class="my-5 border-white border-solid"  required>
@@ -40,7 +40,14 @@
             form.addEventListener('submit', e => {
             e.preventDefault()
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => console.log('Success!', response))
+            .then(response =>{
+             console.log('Success!')
+            const heading=document.getElementById('heading');
+            const form=document.getElementById('form');
+            heading.innerText="Submitted👍"
+            form.classList.add('hidden')
+
+            })//response
             .catch(error => console.error('Error!', error.message))
             })
             </script>
