@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body{
+            color: black;
+
+
+        }
+        input{
+            border: 2px solid black;
+            min-width: 400px;
+            border-radius: 0.5rem;
+            color: black;
+        }
+        button{
+            border: 2px solid white;
+            
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col justify-center bg-slate-950">
+    <h1 class="mt-0 text-4xl font-bold tracking-tight mx-auto sm:text-6xl text-white">CODE HUB</h1>
+        <div class="mt-10 mx-auto">  
+            <form name="submit-to-google-sheet" class="flex flex-col">
+                <input name="name" type="text" placeholder="Name" class="my-5 border-white border-solid" required>
+                <input name="email" type="email" placeholder="Email" class="my-5 border-white border-solid"  required>
+                <button type="submit" class="my-4 text-white" >submit</button>
+            </form>
+        
+      </div>
+
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyTi3Vjm-284weWVu4So2mxmjxHV4-7mM8fRNwaNw9Ucl2YGQe4a5lf8Ry7-VjV0q4A/exec'
+            const form = document.forms['submit-to-google-sheet']
+            form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+            })
+            </script>
+
+    
+</body>
+</html>
