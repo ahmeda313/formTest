@@ -9,7 +9,7 @@
         body{
             color: black;
 
-
+            overflow-y: hidden;
         }
         input{
             border: 2px solid black;
@@ -19,17 +19,24 @@
         }
         button{
             border: 2px solid white;
-            
+            border-radius: 0.5rem;           
         }
+
     </style>
 </head>
 <body class="h-screen w-screen flex flex-col justify-center bg-slate-950">
     <h1 class="mt-0 text-4xl font-bold tracking-tight mx-auto sm:text-6xl text-white" id="heading">CODE HUB</h1>
         <div class="mt-10 mx-auto" id="form">  
             <form name="submit-to-google-sheet" class="flex flex-col">
-                <input name="name" type="text" placeholder="Name" class="my-5 border-white border-solid" required>
-                <input name="email" type="email" placeholder="Email" class="my-5 border-white border-solid"  required>
-                <button type="submit" class="my-4 text-white" >submit</button>
+                <input name="name" type="text" placeholder="Name" class="h-10 my-5 border-white border-solid" required>
+                <input name="email" type="email" placeholder="Email" class="h-10 my-5 border-white border-solid"  required>
+                <button type="submit" class="h-9 my-4 text-white" id="submit" >submit</button>
+
+                <div class="animate-pulse flex space-x-4 hidden" id="animation">
+                    <div class="flex-1 space-y-6 py-1">
+                      <h1 class="h-9 bg-slate-700 rounded text-white flex justify-center sm:text-2xl">Processing...</h1>
+                    </div>
+                </div>
             </form>
         
       </div>
@@ -39,15 +46,23 @@
             const form = document.forms['submit-to-google-sheet']
             form.addEventListener('submit', e => {
             e.preventDefault()
+            const sub=document.getElementById('submit')
+            const ani=document.getElementById('animation')
+
+            sub.remove()
+            ani.classList.remove('hidden')
+
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response =>{
-             console.log('Success!')
+             console.log('Success!') //response
+
             const heading=document.getElementById('heading');
             const form=document.getElementById('form');
+
             heading.innerText="Submitted👍"
             form.classList.add('hidden')
 
-            })//response
+            })
             .catch(error => console.error('Error!', error.message))
             })
             </script>
