@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>the</title>
+    <title>Form test</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body{
@@ -14,6 +14,7 @@
         input{
             border: 2px solid black;
             min-width: 400px;
+            max-width: 500px;
             border-radius: 0.5rem;
             color: black;
         }
@@ -24,17 +25,17 @@
 
     </style>
 </head>
-<body class="h-screen w-screen flex flex-col justify-center bg-slate-950">
-    <h1 class="mt-0 text-4xl font-bold tracking-tight mx-auto sm:text-6xl text-white" id="heading">CODE HUB</h1>
-        <div class="mt-10 mx-auto" id="form">  
+<body class="h-screen w-screen flex flex-col  bg-slate-950">
+    <h1 class="mt-20 text-4xl font-bold tracking-tight mx-auto sm:text-6xl text-white" id="heading">CODE HUB</h1>
+        <div class="mt-20 mx-auto" id="form">  
             <form name="submit-to-google-sheet" class="flex flex-col">
                 <input name="name" type="text" placeholder="Name" class="h-10 my-5 border-white border-solid" required>
                 <input name="email" type="email" placeholder="Email" class="h-10 my-5 border-white border-solid"  required>
-                <button type="submit" class="h-9 my-4 text-white" id="submit" >submit</button>
+                <button type="submit" class="h-10 my-4 text-white sm:text-2xl" id="submit" >Submit</button>
 
                 <div class="animate-pulse flex space-x-4 hidden" id="animation">
                     <div class="flex-1 space-y-6 py-1">
-                      <h1 class="h-9 bg-slate-700 rounded text-white flex justify-center sm:text-2xl">Processing...</h1>
+                      <h1 class="h-10 bg-slate-700 rounded text-white flex justify-center sm:text-2xl">Processing...</h1>
                     </div>
                 </div>
             </form>
